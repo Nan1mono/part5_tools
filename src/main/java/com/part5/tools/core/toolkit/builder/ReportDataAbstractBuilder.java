@@ -1,23 +1,24 @@
-package com.part5.tools.core.builder;
+package com.part5.tools.core.toolkit.builder;
 
 import com.part5.tools.entity.ReportData;
-import com.part5.tools.util.SpringBeanContext;
+import com.part5.tools.core.toolkit.SpringBeanContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
 /**
- * 建造者模式去约定统一的产生规则
- * 在报表的整个生产阶段中，大致可以分离为一下四个阶段
- * 1、获取传参和指定Mapper
- * 2、初始化数据（确定报表初始化时需要用到的数据）
- * 3、数据处理
- * 4、报表组装
+ * 第一层建造约束
+ * 是顶层规则的第一层实现，该抽象类提供给开发者进行调用，同样遵守了三层生产规则
+ * 但其内部额外定义了SpringBeanContext规则
+ * 在整个生产阶段中尽量避免使用@Autowired或者@Resources注解进行自动注入
+ * 优先考虑必须通过springBeanContext.getBean的方法进行注入，目的是为了保证整个抽象过程的强可读性
+ *
  */
-@Component
-public abstract class ReportDataAbstractBuilder implements ReportDataBuilder{
+@ComponentScan(basePackages = "com.part5.tools.core.toolkit")
+@Configuration
+public abstract class ReportDataAbstractBuilder implements IReportDataBuilder{
 
     private Map<String, Object> param;
 
