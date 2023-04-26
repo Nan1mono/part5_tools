@@ -1,6 +1,6 @@
 package com.part5.tools.core.toolkit.builder;
 
-import com.part5.tools.entity.ReportData;
+import com.part5.tools.entity.Table;
 import com.part5.tools.core.toolkit.SpringBeanContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @ComponentScan(basePackages = "com.part5.tools.core.toolkit")
 @Configuration
-public abstract class ReportDataAbstractBuilder implements IReportDataBuilder{
+public abstract class TableAbstractBuilder implements ITableBuilder {
 
     private Map<String, Object> param;
 
@@ -26,13 +26,13 @@ public abstract class ReportDataAbstractBuilder implements IReportDataBuilder{
 
     @Autowired
     private void setApplicationContext(SpringBeanContext springBeanContext) {
-        ReportDataAbstractBuilder.springBeanContext = springBeanContext;
+        TableAbstractBuilder.springBeanContext = springBeanContext;
     }
 
     /**
      * 获取传入的参数
      */
-    public ReportDataAbstractBuilder setParam(Map<String, Object> param) {
+    public TableAbstractBuilder setParam(Map<String, Object> param) {
         this.param = param;
         return this;
     }
@@ -41,7 +41,7 @@ public abstract class ReportDataAbstractBuilder implements IReportDataBuilder{
      * 初始化数据
      */
     @Override
-    public abstract ReportDataAbstractBuilder initData();
+    public abstract TableAbstractBuilder initData();
 
     /**
      * 处理数据
@@ -53,7 +53,7 @@ public abstract class ReportDataAbstractBuilder implements IReportDataBuilder{
      * 组装报表
      */
     @Override
-    public abstract ReportData build();
+    public abstract Table build();
 
     /**
      * 根据参数名称获取指定类型的参数

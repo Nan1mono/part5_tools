@@ -1,7 +1,7 @@
 package com.part5.tools.entity;
 
-import com.part5.tools.core.toolkit.ReportDataConvert;
-import com.part5.tools.core.toolkit.builder.ReportDataAbstractBuilder;
+import com.part5.tools.core.toolkit.TableDataConvert;
+import com.part5.tools.core.toolkit.builder.TableAbstractBuilder;
 import lombok.*;
 import org.apache.commons.collections.CollectionUtils;
 
@@ -19,7 +19,7 @@ import java.util.Collection;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReportData {
+public class Table {
 
     // 指定列头
     public static final String HEADER = "header";
@@ -33,7 +33,7 @@ public class ReportData {
 
     private Collection<?> body;
 
-    public static ReportData create(ReportDataAbstractBuilder builder) {
+    public static Table create(TableAbstractBuilder builder) {
         return builder.build();
     }
 
@@ -64,7 +64,7 @@ public class ReportData {
      * 可以自由选择转换成需要的类型
      * 需要实现ReportDataConvert方法
      */
-    public <T> T convert(ReportDataConvert reportDataConvert) {
+    public <T> T convert(TableDataConvert tableDataConvert) {
         return null;
     }
 

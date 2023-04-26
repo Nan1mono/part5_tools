@@ -1,9 +1,8 @@
 package com.part5.tools.core.toolkit.builder;
 
-import com.part5.tools.entity.ReportData;
+import com.part5.tools.entity.Table;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 /**
  * 顶层报表建造接口，是报表建造的最终规划者，
@@ -16,12 +15,12 @@ import org.springframework.stereotype.Component;
  */
 @ComponentScan(basePackages = "com.part5.tools.core.toolkit")
 @Configuration
-public interface IReportDataBuilder {
+public interface ITableBuilder {
 
     /**
      * 初始化数据
      */
-    ReportDataAbstractBuilder initData();
+    TableAbstractBuilder initData();
 
     /**
      * 处理数据
@@ -31,6 +30,6 @@ public interface IReportDataBuilder {
     /**
      * 组装报表
      */
-    ReportData build();
+    Table build();
 
 }
