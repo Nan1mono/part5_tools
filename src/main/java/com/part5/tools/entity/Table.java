@@ -13,7 +13,6 @@ import java.util.Collection;
  * 所有报表都符合该类的规范且必须要以该类型返回给调用者
  * 接下来的所有的报表格式都将存在该产出规则
  * 其中header和body用的是最大的集合接口，可以传入任何需要的集合
- * 111
  */
 @Getter
 @Setter
